@@ -1,0 +1,45 @@
+#include <iostream>
+#include <cmath>
+const double PI = 3.14159;
+class Shape {
+public:
+    virtual double area() = 0; // Pure virtual function
+};
+class Circle : public Shape {
+private:
+    double radius;
+public:
+    Circle(double r) : radius(r) {
+    double area() override {
+        return PI * radius * radius;
+    }
+};
+class Rectangle : public Shape {
+private:
+    double length;
+    double width;
+public:
+    Rectangle(double l, double w) : length(l), width(w) {
+    double area() override {
+        return length * width;
+    }
+};
+class Triangle : public Shape {
+private:
+    double base;
+    double height;
+public:
+    Triangle(double b, double h) : base(b), height(h) {
+    double area() override {
+        return 0.5 * base * height;
+    }
+};
+int main() {
+    Circle circle(5);
+    Rectangle rectangle(4, 6);
+    Triangle triangle(3, 7);
+    std::cout << "Area of Circle: " << circle.area() << std::endl;
+    std::cout << "Area of Rectangle: " << rectangle.area() << std::endl;
+    std::cout << "Area of Triangle: " << triangle.area() << std::endl;
+    return 0;
+}
