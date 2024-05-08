@@ -1,0 +1,13 @@
+#include <iostream>
+bool isArrayEmpty(int arr[], int size) {
+    return (size == 0);
+}
+int main() {
+    int arr1[] = {1, 2, 3};
+    int size1 = sizeof(arr1) / sizeof(arr1[0]);
+    int arr2[] = {};
+    int size2 = sizeof(arr2) / sizeof(arr2[0]);
+    std::cout << "Is arr1 empty? " << (isArrayEmpty(arr1, size1) ? "true" : "false") << std::endl;
+    std::cout << "Is arr2 empty? " << (isArrayEmpty(arr2, size2) ? "true" : "false") << std::endl;
+    return 0;
+}
