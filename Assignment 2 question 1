@@ -1,0 +1,42 @@
+#include <iostream>
+class Feature {
+public:
+    virtual void use() = 0; // Pure virtual function
+};
+class Camera : public Feature {
+public:
+    void use() override {
+        std::cout << "Camera is capturing photos." << std::endl;
+    }
+};
+class Radio : public Feature {
+public:
+    void use() override {
+        std::cout << "Radio is playing music." << std::endl;
+    }
+};
+class Mobile {
+private:
+    Feature* feature;
+public:
+    Mobile(Feature* feature) : feature(feature) {
+
+    void setFeature(Feature* newFeature) {
+        feature = newFeature;
+    }
+    void useFeature() {
+        if (feature)
+            feature->use();
+        else
+            std::cout << "No feature is available." << std::endl;
+    }
+};
+int main() {
+    Camera camera;
+    Mobile mobile(&camera);
+    mobile.useFeature(); 
+    Radio radio;
+    mobile.setFeature(&radio);
+    mobile.useFeature(); 
+   return 0;
+}
